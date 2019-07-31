@@ -2,6 +2,7 @@ package com.shareeats
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -11,9 +12,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-
+import com.shareeats.User
 
 class CreateAccountActivity : AppCompatActivity() {
     //database
@@ -51,7 +53,7 @@ class CreateAccountActivity : AppCompatActivity() {
         btnCreateAccount = findViewById<View>(R.id.btn_register) as Button
         mProgressBar = ProgressDialog(this)
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase!!.reference!!.child("Users")
+        mDatabaseReference = mDatabase!!.reference.child("Users")
         mAuth = FirebaseAuth.getInstance()
         btnCreateAccount!!.setOnClickListener { createNewAccount() }
     }
@@ -85,14 +87,16 @@ class CreateAccountActivity : AppCompatActivity() {
                         //Verify Email
                         verifyEmail();
                         //update user profile information
-                        val currentUserDb = mDatabaseReference!!.child(userId)
-                        currentUserDb.child(firstName!!).setValue(firstName)
-                        currentUserDb.child(lastName!!).setValue(lastName)
+
+
+                        val user = User.user(firstName+" "+lastName, password, email," ",userId,false)
+                        mDatabaseReference!!.child("Users").child(userId).setValue(user)
+
                         updateUserInfoAndUI()
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                        Toast.makeText(this@CreateAccountActivity, "Authentication failed."+task.exception,
+                        Toast.makeText(this@CreateAccountActivity, "Authentication failed. "+task.exception,
                             Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -105,6 +109,8 @@ class CreateAccountActivity : AppCompatActivity() {
     private fun updateUserInfoAndUI() {
         //update the UserUI and register them
         //start next activity
+
+
         val intent = Intent(this@CreateAccountActivity, HomePage::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
