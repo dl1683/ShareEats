@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AddItemActivity">
+
+    <EditText
+            android:id="@+id/et_name"
+            style="@style/viewCustom"
+            android:ems="10"
+            android:hint="name"
+            android:inputType="textAutoComplete" />
+
+    <EditText
+            android:id="@+id/et_expiry"
+            style="@style/viewCustom"
+            android:ems="10"
+            android:layout_below="@id/et_name"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
+
+    <Button
+            android:id="@+id/btn_add"
+            style="@style/viewCustom"
+            android:layout_below="@id/et_expiry"
+            android:background="@color/colorAccent"
+            android:text="Add item"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+</RelativeLayout>
+

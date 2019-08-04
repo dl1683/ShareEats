@@ -2,20 +2,18 @@ package com.shareeats
 
 import android.app.ProgressDialog
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.shareeats.User
 
 class CreateAccountActivity : AppCompatActivity() {
     //database
@@ -30,13 +28,15 @@ class CreateAccountActivity : AppCompatActivity() {
     private var etPassword: EditText? = null
     private var btnCreateAccount: Button? = null
     private var mProgressBar: ProgressDialog? = null
-
+    private var etPhone: EditText? = null
+    private var cbVolunteer: CheckBox?=null
     private val TAG = "CreateAccountActivity"
     //global variables
     private var firstName: String? = null
     private var lastName: String? = null
     private var email: String? = null
     private var password: String? = null
+    private var phone: String?="" //default value
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +47,7 @@ class CreateAccountActivity : AppCompatActivity() {
     private fun initialise() {
         // intialize all the UI elements
         etFirstName = findViewById<View>(R.id.et_first_name) as EditText
+        etPhone = findViewById<View>(R.id.et_phone) as EditText
         etLastName = findViewById<View>(R.id.et_last_name) as EditText
         etEmail = findViewById<View>(R.id.et_email) as EditText
         etPassword = findViewById<View>(R.id.et_password) as EditText
@@ -55,6 +56,7 @@ class CreateAccountActivity : AppCompatActivity() {
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase!!.reference.child("Users")
         mAuth = FirebaseAuth.getInstance()
+        cbVolunteer=findViewById<View>(R.id.CheckVolunteer) as CheckBox
         btnCreateAccount!!.setOnClickListener { createNewAccount() }
     }
 
@@ -66,10 +68,10 @@ class CreateAccountActivity : AppCompatActivity() {
         lastName = etLastName?.text.toString()
         email = etEmail?.text.toString()
         password = etPassword?.text.toString()
-
+        phone=etPhone?.text.toString()
         //validate the strings and throw error if empty
         if (!TextUtils.isEmpty(firstName) && !TextUtils.isEmpty(lastName)
-            && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+            && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(phone)) {
 
             //show the progress bar
             mProgressBar!!.setMessage("Registering User...")
@@ -88,9 +90,8 @@ class CreateAccountActivity : AppCompatActivity() {
                         verifyEmail();
                         //update user profile information
 
-
-                        val user = User.user(firstName+" "+lastName, password, email," ",userId,false)
-                        mDatabaseReference!!.child("Users").child(userId).setValue(user)
+                        val user = User.user(firstName+" "+lastName,password,email,phone,userId,cbVolunteer!!.isChecked,null)
+                        mDatabaseReference!!.child(userId).setValue(user)
 
                         updateUserInfoAndUI()
                     } else {
@@ -109,9 +110,7 @@ class CreateAccountActivity : AppCompatActivity() {
     private fun updateUserInfoAndUI() {
         //update the UserUI and register them
         //start next activity
-
-
-        val intent = Intent(this@CreateAccountActivity, HomePage::class.java)
+        val intent = Intent(this@CreateAccountActivity, Menu::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

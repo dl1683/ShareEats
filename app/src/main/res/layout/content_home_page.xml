@@ -7,6 +7,6 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/app_bar_home_page"
-        tools:context=".HomePage">
+        tools:context=".UserInformationActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -99,7 +99,7 @@ import com.google.firebase.auth.FirebaseAuth
     }
 
     private fun updateUI() {
-        val intent = Intent(this@LoginActivity, HomePage::class.java)
+        val intent = Intent(this@LoginActivity, Menu::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

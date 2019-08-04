@@ -4,12 +4,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                tools:context="com.shareeats.HomePage">
+                tools:context="com.shareeats.UserInformationActivity">
     <ImageButton
             android:id="@+id/ib_profile_pic"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/ic_launcher_background"
             android:scaleType="centerCrop" />
@@ -22,7 +22,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="First Name : "
+                    android:text="Name : "
                     android:textSize="20sp" />
             <TextView
                     android:id="@+id/tv_first_name"
@@ -34,10 +34,10 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Last Name : "
+                    android:text="Volunteer : "
                     android:textSize="20sp" />
             <TextView
-                    android:id="@+id/tv_last_name"
+                    android:id="@+id/tv_volunteer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp" />
@@ -68,21 +68,29 @@
 
 
         </TableRow>
+        <TableRow>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number : "
+                android:textSize="20sp" />
         <TextView
                 android:id="@+id/tv_phone"
-                android:hint="Enter phone number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp" />
+
+
+        </TableRow>
 
     </TableLayout>
     <Button
             android:id="@+id/SignOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tl_data"
             android:text="Sign Out"
             android:gravity="bottom"
     />
-
 
 </RelativeLayout>

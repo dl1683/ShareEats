@@ -12,14 +12,14 @@
                 style="@style/viewCustom"
                 android:ems="10"
                 android:hint="@string/first_name"
-                android:inputType="textPersonName" />
+                android:inputType="textAutoComplete" />
         <EditText
                 android:id="@+id/et_last_name"
                 style="@style/viewCustom"
                 android:layout_below="@id/et_first_name"
                 android:ems="10"
                 android:hint="@string/last_name"
-                android:inputType="textPersonName" />
+                android:inputType="textAutoComplete" />
         <EditText
                 android:id="@+id/et_email"
                 style="@style/viewCustom"
@@ -34,10 +34,24 @@
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="textPassword" />
+        <EditText
+                android:id="@+id/et_phone"
+                style="@style/viewCustom"
+                android:layout_below="@id/et_password"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="Enter your phone number "
+                 />
+        <CheckBox android:id="@+id/CheckVolunteer"
+                android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="I would like to Volunteer to pick up food"
+                  android:layout_below="@id/btn_register"
+        />
         <Button
                 android:id="@+id/btn_register"
                 style="@style/viewCustom"
-                android:layout_below="@id/et_password"
+                android:layout_below="@id/et_phone"
                 android:background="@color/colorAccent"
                 android:text="@string/create_act"
                 android:textColor="@android:color/white"
