@@ -12,6 +12,7 @@ class Menu : AppCompatActivity() {
     private var btnItems: Button? =null
     private var btnShare: Button? =null
     private var btnAdd: Button? =null
+    private var btnInfo: Button? =null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +24,8 @@ class Menu : AppCompatActivity() {
         btnShare = findViewById<View>(R.id.share) as Button
         btnItems = findViewById<View>(R.id.items) as Button
         btnAdd = findViewById<View>(R.id.add) as Button
+        btnInfo = findViewById<View>(R.id.info) as Button
+
         btnItems!!.setOnClickListener(object: View.OnClickListener {
             override fun onClick(view: View): Unit {
                 // Handler code here.
@@ -34,7 +37,7 @@ class Menu : AppCompatActivity() {
         btnShare!!.setOnClickListener(object: View.OnClickListener {
             override fun onClick(view: View): Unit {
                 // Handler code here.
-                val intent = Intent(this@Menu, MainActivity::class.java) //change to other
+                val intent = Intent(this@Menu, UserInformationActivity::class.java) //change to other
                 startActivity(intent);
             }
         })
@@ -43,6 +46,14 @@ class Menu : AppCompatActivity() {
             override fun onClick(view: View): Unit {
                 // Handler code here.
                 val intent = Intent(this@Menu, AddItemActivity::class.java) //change to other
+                startActivity(intent);
+            }
+        })
+
+        btnInfo!!.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(view: View): Unit {
+                // Handler code here.
+                val intent = Intent(this@Menu, UserInformationActivity::class.java) //change to other
                 startActivity(intent);
             }
         })

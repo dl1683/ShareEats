@@ -89,8 +89,8 @@ class CreateAccountActivity : AppCompatActivity() {
                         //Verify Email
                         verifyEmail();
                         //update user profile information
-
-                        val user = User.user(firstName+" "+lastName,password,email,phone,userId,cbVolunteer!!.isChecked,null)
+                        val mutableList = mutableListOf<User.Item>()
+                        val user = User.user(firstName+" "+lastName,password,email,phone,userId,cbVolunteer!!.isChecked,mutableList)
                         mDatabaseReference!!.child(userId).setValue(user)
 
                         updateUserInfoAndUI()

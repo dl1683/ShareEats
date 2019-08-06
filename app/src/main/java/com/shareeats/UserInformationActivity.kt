@@ -24,6 +24,8 @@ class UserInformationActivity : AppCompatActivity() {
     private var tvPhoneNumber: TextView? = null
 
     private var btnSignOut: Button?=null
+    private var btnMenu: Button?=null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,12 +44,24 @@ class UserInformationActivity : AppCompatActivity() {
         tvEmailVerified = findViewById<View>(R.id.tv_email_verified) as TextView
         tvPhoneNumber=findViewById<View>(R.id.tv_phone) as TextView
         btnSignOut=findViewById<View>(R.id.SignOut) as Button
+        btnMenu=findViewById<View>(R.id.menu) as Button
 
         btnSignOut!!.setOnClickListener(object: View.OnClickListener {
             override fun onClick(view: View): Unit {
                 // Handler code here.
                 FirebaseAuth.getInstance().signOut()
                 val intent = Intent(this@UserInformationActivity, MainActivity::class.java)
+                startActivity(intent);
+
+
+            }
+        })
+
+        btnMenu!!.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(view: View): Unit {
+                // Handler code here.
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this@UserInformationActivity, Menu::class.java)
                 startActivity(intent);
 
 

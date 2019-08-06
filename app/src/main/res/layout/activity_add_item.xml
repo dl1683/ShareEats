@@ -11,21 +11,20 @@
             android:id="@+id/et_name"
             style="@style/viewCustom"
             android:ems="10"
-            android:hint="name"
+            android:hint="name of item"
             android:inputType="textAutoComplete" />
 
-    <EditText
-            android:id="@+id/et_expiry"
+    <TextView
+            android:id="@+id/tv_expiry"
             style="@style/viewCustom"
             android:ems="10"
             android:layout_below="@id/et_name"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+             />
 
     <Button
             android:id="@+id/btn_add"
             style="@style/viewCustom"
-            android:layout_below="@id/et_expiry"
+            android:layout_below="@id/tv_expiry"
             android:background="@color/colorAccent"
             android:text="Add item"
             android:textColor="@android:color/white"

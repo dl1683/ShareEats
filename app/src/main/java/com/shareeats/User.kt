@@ -12,7 +12,7 @@ class User {
                     var phoneNumber: String?="",
                     var uid: String? = "",
                     var volunteer: Boolean?=false,
-                    var items: MutableList<Item>?=null
+                    var items: List<Item>?= emptyList()
 
     )
     fun user.editName(newNumber:String){
@@ -31,7 +31,7 @@ class User {
     @IgnoreExtraProperties
     data class Item(
         var name: String?="",
-        var expiry: Date?=null,
+        var expiry: String?=null,
         var donator: String?=null,
         var pickupGuy: String?=null,
         var location: Location?=null

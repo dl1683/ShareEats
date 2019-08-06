@@ -10,8 +10,8 @@ import com.google.firebase.database.*
 
 class ItemActivity : AppCompatActivity() {
 
-    private var tvHeading: TextView? =null as TextView
-    private var tvItems: TextView? =null as TextView
+    private var tvHeading: TextView? =null
+    private var tvItems: TextView? =null
     private var mDatabaseReference: DatabaseReference? = null
     private var mDatabase: FirebaseDatabase? = null
     private var mAuth: FirebaseAuth? = null

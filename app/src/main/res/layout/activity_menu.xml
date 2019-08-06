@@ -6,23 +6,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Menu">
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
               android:text="@string/app_name"
+    android:id="@+id/heading"/>
 
-              android:background="@color/common_google_signin_btn_text_dark_pressed"
-    />
-    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:text="Share"
-    android:id="@+id/share"
-   />
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Share"
+            android:id="@+id/share"
+            android:layout_below="@+id/heading"/>
 
-    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                             android:text="View items"
-                                             android:id="@+id/items"
-            android:layout_alignBottom="@+id/share"/>
-    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View items"
+            android:id="@+id/items"
+            android:layout_below="@+id/share"/>
+
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Add items"
             android:id="@+id/add"
-            android:layout_alignBottom="@+id/items"/>
+            android:layout_below="@+id/items"/>
+
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Information"
+        android:id="@+id/info"
+        android:layout_below="@+id/add"/>
 
 </RelativeLayout>
