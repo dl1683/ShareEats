@@ -60,7 +60,6 @@ class UserInformationActivity : AppCompatActivity() {
         btnMenu!!.setOnClickListener(object: View.OnClickListener {
             override fun onClick(view: View): Unit {
                 // Handler code here.
-                FirebaseAuth.getInstance().signOut()
                 val intent = Intent(this@UserInformationActivity, Menu::class.java)
                 startActivity(intent);
 

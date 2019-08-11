@@ -7,14 +7,15 @@
         android:layout_height="match_parent"
         tools:context=".ItemActivity">
 
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-    android:id="@+id/heading"
-    android:text="All Items bought "/>
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
               android:id="@+id/items"
+              android:text="..."
+
               />
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
     android:id="@+id/btn_home"
             android:text="Go back to Home"
+
+            android:layout_below="@+id/items"
     />
 </RelativeLayout>

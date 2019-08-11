@@ -37,7 +37,7 @@ class Menu : AppCompatActivity() {
         btnShare!!.setOnClickListener(object: View.OnClickListener {
             override fun onClick(view: View): Unit {
                 // Handler code here.
-                val intent = Intent(this@Menu, UserInformationActivity::class.java) //change to other
+                val intent = Intent(this@Menu, ShareFoodActivity::class.java) //change to other
                 startActivity(intent);
             }
         })

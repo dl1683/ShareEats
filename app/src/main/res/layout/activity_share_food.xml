@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:tools="http://schemas.android.com/tools"
+
+tools:context=".ShareFoodActivity"
+android:name="com.google.android.gms.maps.SupportMapFragment"
+
+android:fitsSystemWindows="true">
+
+<fragment
+        android:id="@+id/map"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+<Button
+        android:id="@+id/fab"
+        android:text="Choose someplace else"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="112dp"
+        android:src="@android:drawable/ic_menu_search"/>
+<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:id="@+id/et_weight"
+android:hint="Enter weight of food"/>
+
+    <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:id="@+id/et_quantity"
+              android:hint="Enter number of things"/>
+
+</RelativeLayout>

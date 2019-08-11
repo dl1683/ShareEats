@@ -92,7 +92,8 @@ class AddItemActivity : AppCompatActivity() {
 
 
             val item = User.Item(firstName,expiry,userId,null,null)
-            val items=mDatabaseReference!!.child(userId).child("items").orderByValue()
+            val newData=mDatabaseReference!!.child(userId).child("items").push()
+            newData.setValue(item)
             updateUserInfoAndUI()
 
             //create the account

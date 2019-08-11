@@ -1,5 +1,6 @@
 package com.shareeats
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,7 +12,6 @@ import com.google.firebase.database.*
 
 class ItemActivity : AppCompatActivity() {
 
-    private var tvHeading: TextView? =null
     private var tvItems: TextView? =null
     private var mDatabaseReference: DatabaseReference? = null
     private var mDatabase: FirebaseDatabase? = null
@@ -23,15 +23,12 @@ class ItemActivity : AppCompatActivity() {
         setContentView(R.layout.activity_item)
         initialize()
     }
-    fun initialize(){
-        tvHeading=findViewById<View>(R.id.heading) as TextView
+    private fun initialize(){
         tvItems=findViewById<View>(R.id.items) as TextView
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase!!.reference.child("Users")
         mAuth = FirebaseAuth.getInstance()
-        tvHeading=findViewById<View>(R.id.heading) as TextView
         btnHome=findViewById<View>(R.id.btn_home) as Button
-
 
     }
 
@@ -42,11 +39,17 @@ class ItemActivity : AppCompatActivity() {
 
         mUserReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                //tvFirstName!!.text=mUserReference.child("name").toString()
-                //tvPhoneNumber!!.text=mUserReference.child("phoneNumber").toString()
-                tvItems?.text=snapshot.child("items").value.toString()
+                val snap=snapshot.child("items").value as HashMap<String,Any>
+                val iter=snap.keys.toList()
+                var stuff=""
+                for(key in iter){
+                    val name=snapshot.child("items").child(key).child("name").value.toString()
+                    val expiry=snapshot.child("items").child(key).child("expiry").value.toString()
+                    stuff+="Name: "+name+" Expiry: "+expiry+"\n"
+                }
+                tvItems?.text=stuff
                 val message="Details"
-                Toast.makeText(this@ItemActivity, message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ItemActivity,message, Toast.LENGTH_SHORT).show()
 
             }
             override fun onCancelled(databaseError: DatabaseError) {
@@ -54,5 +57,16 @@ class ItemActivity : AppCompatActivity() {
             }
         })
 
+        btnHome!!.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(view: View): Unit {
+                // Handler code here.
+                val intent = Intent(this@ItemActivity, Menu::class.java)
+                startActivity(intent);
+
+            }
+        })
+
+
     }
+
 }
